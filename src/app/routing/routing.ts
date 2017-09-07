@@ -1,29 +1,21 @@
-import {NgModule} from "@angular/core";
-import {RouterModule} from "@angular/router";
-import {LoginComponent} from "../components/login.component";
-import {PageNotFoundComponent} from '../components/404err.component';
-import {PendingChangesGuard} from "./pending-changes-guard";
+import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
+import {AppComponent} from '../app.component';
 
 const appRoutes = [
   {
     path: 'login',
-    component: LoginComponent,
-    outlet: 'popup'
+    component: AppComponent
   },
   {
     path: '',
     redirectTo: '/projects',
     pathMatch: 'full'
-  },
-  {
-    path: '**',
-    component: PageNotFoundComponent
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes, {enableTracing: false})],
-  providers: [PendingChangesGuard],
+  imports: [RouterModule.forRoot(appRoutes, {enableTracing: true})],
   exports: [RouterModule]
 })
 export class AppRouterModule {
